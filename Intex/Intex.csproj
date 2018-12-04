@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -158,7 +164,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\component.css" />
+    <Content Include="Content\demo.css" />
+    <Content Include="Content\normalize.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\codropsicons\codropsicons.svg" />
+    <Content Include="fonts\codropsicons\license.txt" />
+    <Content Include="fonts\ecoicons\ecoicons.dev.svg" />
+    <Content Include="fonts\ecoicons\ecoicons.svg" />
+    <Content Include="fonts\ecoicons\license.txt" />
+    <Content Include="fonts\ecoicons\Read Me.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -167,7 +182,16 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\codropsicons\.DS_Store" />
+    <Content Include="fonts\codropsicons\codropsicons.eot" />
+    <Content Include="fonts\codropsicons\codropsicons.ttf" />
+    <Content Include="fonts\codropsicons\codropsicons.woff" />
+    <Content Include="fonts\ecoicons\ecoicons.eot" />
+    <Content Include="fonts\ecoicons\ecoicons.ttf" />
+    <Content Include="fonts\ecoicons\ecoicons.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\classie.js" />
+    <Content Include="Scripts\gnmenu.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -178,6 +202,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\modernizr.custom.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
