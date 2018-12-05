@@ -1,4 +1,4 @@
-﻿using Intex.Models;
+﻿using Intex.models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,9 +7,9 @@ using System.Web;
 
 namespace Intex.DAL
 {
-    public class Intex : DbContext
+    public class IntexContext : DbContext
     {
-        public Intex() : base("Intex")
+        public IntexContext() : base("Intex")
         {
 
         }

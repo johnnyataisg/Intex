@@ -5,17 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Intex.Models;
+using Intex.models;
 using Intex.DAL;
 using System.Data.Entity;
 
-namespace Intex.DAL
+namespace Intex
 {
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<Intex>(null);
+            Database.SetInitializer<IntexContext>(null);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

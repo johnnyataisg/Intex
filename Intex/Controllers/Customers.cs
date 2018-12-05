@@ -23,6 +23,7 @@ namespace Intex.models
         public string PaymentInfo { get; set; }
         public string TotalOrderVolume { get; set; }
         public bool DiscountQualify { get; set; }
+        public string Username { get; set; }
         [ForeignKey("CustomerUsers")]
         public string Username { get; set; }
         public virtual CustomerUsers customerusers { get; set; }
