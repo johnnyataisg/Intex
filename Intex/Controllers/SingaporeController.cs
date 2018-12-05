@@ -13,5 +13,10 @@ namespace Intex.Controllers
             return View();
         }
 
+        public ActionResult AllOrders()
+        {
+
+            return View();
+        }
     }
 }

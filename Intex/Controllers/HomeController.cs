@@ -13,6 +13,11 @@ namespace Intex.Controllers
     {
         private IntexContext database = new IntexContext();
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         // GET: Home
         [HttpGet]
         public ActionResult Login()
