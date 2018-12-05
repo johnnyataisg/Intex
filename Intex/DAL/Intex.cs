@@ -9,7 +9,7 @@ namespace Intex.DAL
 {
     public class IntexContext : DbContext
     {
-        public IntexContext() : base("Intex")
+        public IntexContext() : base("IntexContext")
         {
 
         }
