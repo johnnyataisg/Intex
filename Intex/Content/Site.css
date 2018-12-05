@@ -22,13 +22,3 @@ select,
 textarea {
     max-width: 280px;
 }
-
-.login-info {
-    text-align: center;
-}
-
-.form-box {
-    margin-left: 30% !important;
-    margin-right: 30% !important;
-    width: 100% !important;
-}
