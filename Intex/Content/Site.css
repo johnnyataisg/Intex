@@ -1,7 +1,45 @@
-﻿body {
+﻿.login-background {
+    background-image: url('../Content/rain.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.form-box {
+.login-form {
+    width: 70%;
+}
+
+.login-form label {
+    font-size: 20px;
+}
+
+.login-box {
+    background: rgba(208, 208, 208, 0.75); width: 25%;
+    border-radius: 15px;
+}
+
+.login-btn {
+    width: 80%;
+    margin-bottom: 30px;
+    border-radius: 40px;
+}
+
+.login-form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 1.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/*This styling is for the customer portal and homepage*/
+.customer-page-form-box {
     display: block;
     width: calc(50% - 5px);
     padding: 12px 16px;
@@ -13,3 +51,4 @@
     background: #f0f4f8;
     outline: none;
 }
+
