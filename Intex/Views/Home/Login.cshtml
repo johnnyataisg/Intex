@@ -22,6 +22,7 @@
                 <br>
                 <label>Password:</label>
                 <input class="login-form-control" type="password" name="password" placeholder="Password">
+                @Html.Raw((String)ViewBag.ValidationMessage)
                 <br><br>
                 <input class="btn btn-danger login-btn btn-lg" type="submit" value="Submit">
             </form>

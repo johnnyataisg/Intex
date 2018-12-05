@@ -45,6 +45,7 @@ namespace Intex.Controllers
                     }
                 }
             }
+            ViewBag.ValidationMessage = "<p style=\"color: red;\">Username or password is wrong</p>";
             return View();
         }
     }
