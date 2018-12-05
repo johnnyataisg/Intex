@@ -15,8 +15,8 @@ namespace Intex.models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string OfficeLocation { get; set; }
-        [ForeignKey("EmployeeUsers")]
-        public string Username { get; set; }
+        [ForeignKey("employeeusers")]
+        public virtual string Username { get; set; }
         public virtual EmployeeUsers employeeusers { get; set; }
     }
 }
