@@ -14,7 +14,7 @@ namespace Intex.models
         public int TestTubeNumber { get; set; }
         public double Concentration { get; set; }
         public bool IsRequired { get; set; }
-        [ForeignKey("Tests")]
+        [ForeignKey("test")]
         public int TestID { get; set; }
         public virtual Tests test { get; set; }
     }

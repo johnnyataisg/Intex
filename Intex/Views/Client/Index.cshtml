@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Intex.models.Samples>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model)
+{
+    <td>
+        @Html.DisplayFor(modelItem => item.workorders.customers.CustomerName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.workorders.compounds.CompoundName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.workorders.ReceiveDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.assay.testtubes.test.TestName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.assay.testtubes.TestTubeNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.assay.AssayName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Appearance)
+    </td>
+
+}

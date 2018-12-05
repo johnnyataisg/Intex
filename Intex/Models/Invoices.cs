@@ -18,7 +18,7 @@ namespace Intex.models
         public double Discount { get; set; }
         public bool IsPaid { get; set; }
         public DateTime DateSent { get; set; }
-        [ForeignKey("WorkOrders")]
+        [ForeignKey("workorders")]
         public int LTNumber { get; set; }
         public virtual WorkOrders workorders { get; set; }
     }
