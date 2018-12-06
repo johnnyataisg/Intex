@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Intex.models.Customers>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_SeattleLayout.cshtml";
+}
+
+<header class="employee-header order-table-box">
+    <h2>Customers</h2>
+    <div>
+        <table id="allOrders" class="table" style="font-size: 15px;">
+            <thead style="text-align: left; border-bottom: 2px solid azure;">
+                <tr class="order-table-header">
+                    <th>
+                        Customer ID
+                    </th>
+                    <th class="order-table-col-2">
+                        Customer Name
+                    </th>
+                    <th class="order-table-col-2">
+                        Phone Number
+                    </th>
+                    <th class="order-table-col-2">
+                        Email
+                    </th>
+                    <th class="order-table-col-2">
+                        Street Address
+                    </th>
+                    <th class="order-table-col-2">
+                        City
+                    </th>
+                    <th class="order-table-col-2">
+                        Zip Code
+                    </th>
+                    <th class="order-table-col-2">
+                        State
+                    </th>
+                    <th class="order-table-col-2">
+                        Country
+                    </th>
+                    <th class="order-table-col-2">
+                        Payment Type
+                    </th>
+                    <th class="order-table-col-2">
+                        Total Order Volume
+                    </th>
+                    <th class="order-table-col-2">
+                        Discount Qualification
+                    </th>
+                    <th class="order-table-col-2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="customer-table-row">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerID)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.CustomerName)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.Zip)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.PaymentInfo)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.TotalOrderVolume)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.DiscountQualify)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <button class="btn btn-danger btn-lg">Delete Orders</button>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="width: 50%;">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+
+    </div>
+</header>

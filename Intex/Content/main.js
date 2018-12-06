@@ -3,9 +3,22 @@
         $(this).toggleClass("hovered");
     });
 
+    $(".customer-table-row").hover(function () {
+        $(this).toggleClass("hovered");
+    });
+
     $(".order-table-row").on("click", function () {
         $(this).toggleClass("highlighted");
         $(this).next().toggleClass("hidden");
+    });
+
+    $(".customer-table-row").on("click", function () {
+
+        $(".modal").addClass("show");
+    });
+
+    $(".close").on("click", function () {
+        $(".modal").removeClass("show");
     });
 
     $('#button').on("click", function () {

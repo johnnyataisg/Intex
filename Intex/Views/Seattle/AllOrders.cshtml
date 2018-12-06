@@ -73,7 +73,7 @@
                         </td>
                     </tr>
                     <tr class="hidden">
-                        <td>
+                        <td colspan="3">
                             <table>
                                @foreach (var child in item.SampleList)
                                 {
@@ -82,6 +82,14 @@
                                     <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.SequenceNumber)</td>
                                     <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Quantity)</td>
                                     <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.assay.AssayName)</td>
+                                   @if (child.AssayFinished)
+                                    {
+                                        <td class="order-table-col-2" style="color: red;">In Progress</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="order-table-col-2" style="color: green;">Testing Completed</td>
+                                    }
                                 </tr>
                                 }
                             </table>

@@ -40,5 +40,12 @@ namespace Intex.Controllers
             }
             return View(allOrdersSamples);
         }
+
+        public ActionResult Customers()
+        {
+            var customers = Database.customers.Include(w => w.customerusers);
+            List<Customers> allCustomers = customers.ToList();
+            return View(allCustomers);
+        }
     }
 }
