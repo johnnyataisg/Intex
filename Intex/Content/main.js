@@ -5,6 +5,7 @@
 
     $(".order-table-row").on("click", function () {
         $(this).toggleClass("highlighted");
+        $(this).next().toggleClass("hidden");
     });
 
     $('#button').on("click", function () {

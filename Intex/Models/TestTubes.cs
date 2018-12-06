@@ -11,11 +11,15 @@ namespace Intex.models
     public class TestTubes
     {
         [Key]
+        public string TestTubeID { get; set; }
         public int TestTubeNumber { get; set; }
         public double Concentration { get; set; }
         public bool IsRequired { get; set; }
-        [ForeignKey("Tests")]
-        public int TestID { get; set; }
+        [ForeignKey("sample")]
+        public virtual string SampleID { get; set; }
+        public virtual Samples sample { get; set; }
+        [ForeignKey("test")]
+        public virtual int? TestID { get; set; }
         public virtual Tests test { get; set; }
     }
 }

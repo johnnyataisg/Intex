@@ -83,6 +83,10 @@
     border-radius: 15px;
 }
 
+.hidden {
+    display: none;
+}
+
 .hovered {
     background-color: rgba(183, 183, 183, 0.70);
     cursor: pointer;

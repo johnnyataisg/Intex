@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Intex.models.WorkOrders>
+﻿@model IEnumerable<Intex.models.OrderDetails>
 
 @{
     ViewBag.Title = "Display All Orders";
@@ -40,39 +40,54 @@
             </thead>
             <tbody>
                 @foreach (var item in Model)
-                {
+                 {
                     <tr class="order-table-row">
                         <td>
-                            @Html.DisplayFor(modelItem => item.LTNumber)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.LTNumber)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.DisplayFor(modelItem => item.compounds.CompoundName)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.compounds.CompoundName)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.DisplayFor(modelItem => item.customers.CustomerName)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.customers.CustomerName)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.DisplayFor(modelItem => item.ReceiveDate)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.ReceiveDate)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.DisplayFor(modelItem => item.DateDue)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.DateDue)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.DisplayFor(modelItem => item.ConfirmDateTime)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.ConfirmDateTime)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.DisplayFor(modelItem => item.Comments)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.Comments)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.DisplayFor(modelItem => item.HasDiscount)
+                            @Html.DisplayFor(modelItem => item.WorkOrder.HasDiscount)
                         </td>
                         <td class="order-table-col-2">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.LTNumber }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.LTNumber }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.LTNumber })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrder.LTNumber }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.WorkOrder.LTNumber }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.WorkOrder.LTNumber })
                         </td>
                     </tr>
-                }
+                    <tr class="hidden">
+                        <td>
+                            <table>
+                               @foreach (var child in item.SampleList)
+                                {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => child.SampleID)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.SequenceNumber)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Quantity)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.assay.AssayName)</td>
+                                </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                 }
             </tbody>
         </table>
         <br />

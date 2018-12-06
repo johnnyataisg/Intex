@@ -15,8 +15,5 @@ namespace Intex.models
         public string AssayName { get; set; }
         public string EstimatedDuration { get; set; }
         public string Instructions { get;set; }
-        [ForeignKey("TestTubes")]
-        public int TestTubeNumber { get; set; }
-        public virtual TestTubes testtubes { get; set; }
     }
 }

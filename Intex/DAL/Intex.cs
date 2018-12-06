@@ -14,22 +14,17 @@ namespace Intex.DAL
 
         }
 
-        /*public DbSet<Assays> assays { get; set; }
+        public DbSet<WorkOrders> workorders { get; set; }
         public DbSet<Compounds> compounds { get; set; }
         public DbSet<Customers> customers { get; set; }
-        public DbSet<CustomerUsers> customerusers { get; set; }*/
+        public DbSet<Samples> samples { get; set; }
         public DbSet<Employees> employees { get; set; }
         public DbSet<EmployeeUsers> employeeusers { get; set; }
-
-        public System.Data.Entity.DbSet<Intex.models.WorkOrders> WorkOrders { get; set; }
-
-        public System.Data.Entity.DbSet<Intex.models.Compounds> Compounds { get; set; }
-
-        public System.Data.Entity.DbSet<Intex.models.Customers> Customers { get; set; }
-        /*public DbSet<Invoices> invoices { get; set; }
-public DbSet<Samples> samples { get; set; }
-public DbSet<Tests> tests { get; set; }
-public DbSet<TestTubes> testtubes { get; set; }
-public DbSet<WorkOrders> workorders { get; set; }*/
+        /*
+        public DbSet<Assays> assays { get; set; }
+        public DbSet<CustomerUsers> customerusers { get; set; }
+        public DbSet<Invoices> invoices { get; set; }
+        public DbSet<Tests> tests { get; set; }
+        public DbSet<TestTubes> testtubes { get; set; }*/
     }
 }

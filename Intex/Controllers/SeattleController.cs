@@ -21,8 +21,24 @@ namespace Intex.Controllers
 
         public ActionResult AllOrders()
         {
-            var workOrders = Database.WorkOrders.Include(w => w.compounds).Include(w => w.customers);
-            return View(workOrders.ToList());
+            var workOrders = Database.workorders.Include(w => w.compounds).Include(w => w.customers);
+            List<WorkOrders> allOrders = workOrders.ToList();
+            List<OrderDetails> allOrdersSamples = new List<OrderDetails>();
+            foreach (WorkOrders order in allOrders)
+            {
+                OrderDetails orderSamples = new OrderDetails();
+                orderSamples.WorkOrder = order;
+                orderSamples.SampleList = new List<Samples>();
+                foreach (Samples sample in Database.samples.Include(w => w.assay).ToList())
+                {
+                    if (sample.LTNumber == order.LTNumber)
+                    {
+                        orderSamples.SampleList.Add(sample);
+                    }
+                }
+                allOrdersSamples.Add(orderSamples);
+            }
+            return View(allOrdersSamples);
         }
     }
 }
