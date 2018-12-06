@@ -17,11 +17,11 @@ namespace Intex.models
         public double IndicatedWeight { get; set; }
         public double ActualWeight { get; set; }
         public double MolecularMass { get; set; }
-        [ForeignKey("Assays")]
-        public int AssayID { get; set; }
+        [ForeignKey("assay")]
+        public virtual int AssayID { get; set; }
         public virtual Assays assay { get; set; }
-        [ForeignKey("WorkOrders")]
-        public int LTNumber { get; set; }
+        [ForeignKey("workorders")]
+        public virtual int LTNumber { get; set; }
         public virtual WorkOrders workorders { get; set; }
     }
 }

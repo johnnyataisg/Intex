@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Intex.models.WorkOrders>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SeattleLayout.cshtml";
+}
+<link href="~/Content/bootstrap.css" type="test/css" rel="stylesheet" />
+<header>
+    <h2>All Orders</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th class="order-table-col-1">
+                @Html.DisplayNameFor(model => model.LTNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.compounds.CompoundName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customers.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasDiscount)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="order-table-col-1">
+                    @Html.DisplayFor(modelItem => item.LTNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.compounds.CompoundName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customers.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceiveDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ConfirmDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasDiscount)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LTNumber }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LTNumber }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LTNumber })
+                </td>
+            </tr>
+        }
+
+    </table>
+</header>

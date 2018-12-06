@@ -38,6 +38,27 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.order-table-header {
+    height: 50px;
+}
+
+.order-table-row {
+    height: 50px;
+}
+
+.order-table-col-2 {
+    padding-left: 15px;
+}
+
+.hovered {
+    background-color: rgba(135, 135, 135, 0.74);
+    cursor: pointer;
+}
+
+.highlighted {
+    background-color: rgba(140, 151, 171, 0.80) !important;
+}
+
 /*This styling is for the customer portal and homepage*/
 .customer-page-form-box {
     display: block;

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Intex.models.WorkOrders>
+
+@{
+    ViewBag.Title = "Display All Orders";
+    Layout = "~/Views/Shared/_SeattleLayout.cshtml";
+}
+
+<script src="~/Content/main.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<header style="padding-left: 10%;">
+    <div>
+        <table id="allOrders" style="font-size: 15px;" class="table">
+            <thead style="text-align: left; border-bottom: 2px solid azure;">
+                <tr class="order-table-header">
+                    <th>
+                        LT Number
+                    </th>
+                    <th class="order-table-col-2">
+                        Compound Name
+                    </th>
+                    <th class="order-table-col-2">
+                        Customer Name
+                    </th>
+                    <th class="order-table-col-2">
+                        Receive Date
+                    </th>
+                    <th class="order-table-col-2">
+                        Test Due Date
+                    </th>
+                    <th class="order-table-col-2">
+                        Confirmation Date
+                    </th>
+                    <th class="order-table-col-2">
+                        Comments
+                    </th>
+                    <th class="order-table-col-2">
+                        Discount (Y/N)
+                    </th>
+                    <th class="order-table-col-2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="order-table-row">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LTNumber)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.compounds.CompoundName)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.customers.CustomerName)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.ReceiveDate)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.DateDue)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.ConfirmDateTime)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.Comments)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.HasDiscount)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.LTNumber }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.LTNumber }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.LTNumber })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <button class="btn btn-danger btn-lg">Delete Orders</button>
+    </div>
+</header>

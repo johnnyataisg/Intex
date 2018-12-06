@@ -17,11 +17,11 @@ namespace Intex.models
         public DateTime ConfirmDateTime { get; set; }
         public string Comments { get; set; }
         public bool HasDiscount { get; set; }
-        [ForeignKey("Customers")]
-        public string CustomerID { get; set; }
+        [ForeignKey("customers")]
+        public virtual int? CustomerID { get; set; }
         public virtual Customers customers { get; set; }
-        [ForeignKey("Compounds")]
-        public string CompoundID { get; set; }
+        [ForeignKey("compounds")]
+        public virtual int? CompoundID { get; set; }
         public virtual Compounds compounds { get; set; }
     }
 }

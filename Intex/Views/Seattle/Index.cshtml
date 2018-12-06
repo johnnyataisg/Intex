@@ -1,73 +1,10 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Seattle Employee Portal";
-    Layout = null;
+    Layout = "~/Views/Shared/_SeattleLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    @Scripts.Render("~/bundles/modernizr")
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
-    <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
-    <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="~/Content/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/demo.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/component.css" />
-    <script src="~/Scripts/modernizr.custom.js"></script>
-</head>
-<body>
-    <div class="container">
-        <ul id="gn-menu" class="gn-menu-main">
-            <li class="gn-trigger">
-                <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-                <nav class="gn-menu-wrapper">
-                    <div class="gn-scroller">
-                        <ul class="gn-menu">
-                            <li class="gn-search-item">
-                                <input placeholder="Search" type="search" class="gn-search">
-                                <a class="gn-icon gn-icon-search"><span>Search Work Orders</span></a>
-                            </li>
-                            <li>
-                                <a class="gn-icon gn-icon-download">All Work Orders</a>
-                                <ul class="gn-submenu">
-                                    <li><a href=@Url.Action("AllOrders", "Singapore") class="gn-icon gn-icon-earth">In Testing</a></li>
-                                    <li><a class="gn-icon gn-icon-earth">Completed Testing</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="gn-icon gn-icon-download">Downloads</a>
-                                <ul class="gn-submenu">
-                                    <li><a class="gn-icon gn-icon-illustrator">Vector Illustrations</a></li>
-                                    <li><a class="gn-icon gn-icon-photoshop">Photoshop files</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="gn-icon gn-icon-cog">Settings</a></li>
-                            <li><a class="gn-icon gn-icon-help">Logout</a></li>
-                        </ul>
-                    </div><!-- /gn-scroller -->
-                </nav>
-            </li>
-            <li><a href="">Codrops</a></li>
-            <li><a class="codrops-icon codrops-icon-prev" href=""><span>Previous Demo</span></a></li>
-            <li><a class="codrops-icon codrops-icon-drop" href=""><span>NorthWest Test Labs</span></a></li>
-        </ul>
-        <header>
-            <h2>Seattle Employee Homepage</h2>
-            <h1>Hello World</h1>
-            <hr />
-        </header>
-    </div><!-- /container -->
-    <script src="~/Scripts/classie.js"></script>
-    <script src="~/Scripts/gnmenu.js"></script>
-    <script>
-        new gnMenu(document.getElementById('gn-menu'));
-    </script>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-</body>
-</html>
+<header>
+    <h2>Seattle Employee Homepage</h2>
+    <h1>Hello World</h1>
+    <hr />
+</header>
