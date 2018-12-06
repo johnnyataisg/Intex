@@ -234,6 +234,8 @@
     <Content Include="Content\subscribe-bg.png" />
     <Content Include="Content\swiper.css" />
     <Content Include="Content\swiper.min.css" />
+    <Content Include="Content\systembackground.jpg" />
+    <Content Include="Content\systembackground2.jpg" />
     <Content Include="Content\team-1.jpg" />
     <Content Include="Content\team-2.jpg" />
     <Content Include="Content\team-3.jpg" />

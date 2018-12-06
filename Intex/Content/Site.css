@@ -1,4 +1,31 @@
-﻿.login-background {
+﻿@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+    font-family: 'codropsicons';
+    src: url('../fonts/codropsicons/codropsicons.eot');
+    src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.employee-header {
+    margin-top: 10%;
+    font-family: 'Lato', Arial, sans-serif !important;
+}
+
+.singapore-employee-body {
+    background-image: url('../Content/systembackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.seattle-employee-body {
+    background-image: url('../Content/systembackground2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-background {
     background-image: url('../Content/rain.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -50,8 +77,14 @@
     padding-left: 15px;
 }
 
+.order-table-box {
+    background: #8080804d;
+    padding: 30px;
+    border-radius: 15px;
+}
+
 .hovered {
-    background-color: rgba(135, 135, 135, 0.74);
+    background-color: rgba(183, 183, 183, 0.70);
     cursor: pointer;
 }
 
