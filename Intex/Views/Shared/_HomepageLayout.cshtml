@@ -32,13 +32,13 @@
 
                         <nav class="site-navigation d-flex justify-content-end align-items-center">
                             <ul class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center">
-                                <li><a href="/Home/Index" style="color:white">Home</a></li>
-                                <li><a href="/home/about" style="color:white">About Us</a></li>
-                                <li><a href="/home/locations" style="color:white">Locations</a></li>
-                                <li><a href="/home/login" style="color:white">Customer Portal</a></li>
+                                <li><a href=@Url.Action("Index", "Home") style="color:white">Home</a></li>
+                                <li><a href=@Url.Action("About", "Home") style="color:white">About Us</a></li>
+                                <li><a href=@Url.Action("Locations", "Home") style="color:white">Locations</a></li>
+                                <li><a href=@Url.Action("Login", "Home") style="color:white">Customer Portal</a></li>
 
                                 <li class="call-btn button gradient-bg mt-3 mt-md-0">
-                                    <a class="d-flex justify-content-center align-items-center" href="/home/newaccount">Create Account</a>
+                                    <a class="d-flex justify-content-center align-items-center" href=@Url.Action("NewAccount", "Home")>Create Account</a>
                                 </li>
                             </ul>
                         </nav><!-- .site-navigation -->
@@ -77,11 +77,11 @@
                             <h2>Sitemap</h2>
 
                             <ul class="p-0 m-0">
-                                <li><a href="/home/index">Home</a></li>
-                                <li><a href="/home/about">About Us</a></li>
-                                <li><a href="/home/locations">Locations</a></li>
-                                <li><a href="/home/login">Customer Portal</a></li>
-                                <li><a href="/home/login">Create an Account</a></li>
+                                <li><a href=@Url.Action("Index", "Home")>Home</a></li>
+                                <li><a href=@Url.Action("About", "Home")>About Us</a></li>
+                                <li><a href=@Url.Action("Locations", "Home")>Locations</a></li>
+                                <li><a href=@Url.Action("Login", "Home")>Customer Portal</a></li>
+                                <li><a href=@Url.Action("NewAccount", "Home")>Create Account</a></li>
                                 <li><p class="copyright">
     <a href="https://colorlib.com" target="_blank">Colorlib</a>
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

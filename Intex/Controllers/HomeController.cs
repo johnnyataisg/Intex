@@ -45,6 +45,8 @@ namespace Intex.Controllers
         {
             if (ModelState.IsValid)
             {
+                customers.TotalOrderVolume = 0;
+                customers.DiscountQualify = false;
                 database.customers.Add(customers);
                 customerusers.Username = customers.Username;
                 database.customerusers.Add(customerusers);

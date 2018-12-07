@@ -13,7 +13,7 @@ namespace Intex.models
         [Key]
         public int CompoundID { get; set; }
         public string CompoundName { get; set; }
-        public double MaxTolerateDose { get; set; }
+        public double? MaxTolerateDose { get; set; }
     }
 }
 

@@ -22,6 +22,7 @@ namespace Intex.Controllers
         public ActionResult Index(string id)
         {
             Customers customer = db.customers.Where(person => person.Username == id).FirstOrDefault();
+            userid = customer.CustomerID;
             return View(customer);
         }
 
@@ -73,18 +74,6 @@ namespace Intex.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Edit/5
-        [HttpGet]
-        public ActionResult Settings()
-        {
-            Customers customers = db.customers.Find(userid);
-            if (customers == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customers);
-        }
-
         public ActionResult RequestQuote()
         {
             Customers customers = db.customers.Find(userid);
@@ -105,40 +94,79 @@ namespace Intex.Controllers
             return View(customers);
         }
 
-        public ActionResult WorkOrders1()
-        {
-            WorkOrders a = new WorkOrders();
-            a.customers = db.customers.Find(userid);
-            a.compounds = new Compounds();
-            if (a == null)
-            {
-                return HttpNotFound();
-            }
-            NumberInput ni = new NumberInput();
-            ni.wo = a;
-            return View(ni);
-        }
-
         public ActionResult MyWorkOrders()
         {
-            return View(db.workorders.ToList());
+            Customers customer = db.customers.Find(userid);
+            var workorders = db.workorders.Where(order => order.CustomerID == customer.CustomerID);
+            List<WorkOrders> myOrders = workorders.ToList();
+            List<OrderDetails> allOrdersSamples = new List<OrderDetails>();
+            foreach (WorkOrders order in myOrders)
+            {
+                OrderDetails orderSamples = new OrderDetails();
+                orderSamples.WorkOrder = order;
+                orderSamples.SampleList = new Dictionary<Samples, List<TestTubes>>();
+                foreach (Samples sample in db.samples.Include(w => w.assay).ToList())
+                {
+                    if (sample.LTNumber == order.LTNumber)
+                    {
+                        orderSamples.SampleList.Add(sample, null);
+                    }
+                }
+                allOrdersSamples.Add(orderSamples);
+            }
+            return View(allOrdersSamples);
+        }
+
+        public ActionResult NewOrder()
+        {
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult WorkOrders1([Bind(Include ="wo,input")] NumberInput i)
+        public ActionResult NewOrder(NewOrder newOrder)
         {
             if (ModelState.IsValid)
             {
-                i.wo.CustomerID = userid;
-                i.wo.DateDue = DateTime.Now.AddDays(5);
-                i.wo.ReceiveDate = DateTime.Now;
-                db.workorders.Add(i.wo);
+                Customers customer = db.customers.Find(userid);
+
+                Compounds newCompound = new Compounds();
+                newCompound.CompoundName = newOrder.CompoundName;
+                db.compounds.Add(newCompound);
                 db.SaveChanges();
-                int c = i.Input;
-                return RedirectToAction("WorkOrders2", new { count = c, lt = i.wo.LTNumber});
+
+                WorkOrders newWorkOrder = new WorkOrders();
+                Compounds compound = db.compounds.Where(temp => temp.CompoundName == newOrder.CompoundName).FirstOrDefault();
+                newWorkOrder.CompoundID = compound.CompoundID;
+                newWorkOrder.CustomerID = userid;
+                newWorkOrder.ReceiveDate = DateTime.Now;
+                newWorkOrder.DateDue = DateTime.Now.AddDays(5);
+                newWorkOrder.Comments = newOrder.Comments;
+                if (customer.DiscountQualify == true)
+                {
+                    newWorkOrder.HasDiscount = true;
+                }
+                else
+                {
+                    newWorkOrder.HasDiscount = false;
+                }
+                db.workorders.Add(newWorkOrder);
+                db.SaveChanges();
+                
+                for (int i = 0; i < newOrder.NumberSamples; i++)
+                {
+                    Samples newSample = new Samples();
+                    newSample.LTNumber = newWorkOrder.LTNumber;
+                    newSample.SequenceNumber = i + 1;
+                    newSample.SampleID = "LT" + newSample.LTNumber + "-" + newSample.SequenceNumber;
+                    newSample.AssayFinished = false;
+                    db.samples.Add(newSample);
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("Index", new { id = customer.Username });
             }
-            return View(i.wo);
+            return View();
         }
 
         // GET: Clients/Edit/5
@@ -162,40 +190,12 @@ namespace Intex.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // POST: Customers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Settings([Bind(Include = "CustomerID,CustomerName,PhoneNumber,Email,Address,City,Zip,State,Country,PaymentInfo,TotalOrderVolume,DiscountQualify,Username")] Customers customers, [Bind(Include = "Username,Password")] CustomerUsers customerusers)
+        // GET: Customers/Edit/5
+        [HttpGet]
+        public ActionResult Settings()
         {
-            if (ModelState.IsValid)
-            {
-                db.customers.Find(userid).CustomerName = customers.CustomerName;
-                db.customers.Find(userid).PhoneNumber = customers.PhoneNumber;
-                db.customers.Find(userid).Email = customers.Email;
-                db.customers.Find(userid).Address = customers.Address;
-                db.customers.Find(userid).City = customers.City;
-                db.customers.Find(userid).Zip = customers.Zip;
-                db.customers.Find(userid).State = customers.State;
-                db.customers.Find(userid).Country = customers.Country;
-                db.customers.Find(userid).PaymentInfo = customers.PaymentInfo;
-                db.customers.Find(userid).customerusers.Password = customerusers.Password;
-                db.SaveChanges();
-                return RedirectToAction("Login","Home");
-            }
 
-            return View(customers);
-        }
-
-        // GET: Customers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customers customers = db.customers.Find(id);
+            Customers customers = db.customers.Find(userid);
             if (customers == null)
             {
                 return HttpNotFound();
@@ -203,15 +203,20 @@ namespace Intex.Controllers
             return View(customers);
         }
 
-        // POST: Customers/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: Customers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Settings(Customers customer)
         {
-            Customers customers = db.customers.Find(id);
-            db.customers.Remove(customers);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Login","Home");
+            }
+            return View(customer);
         }
 
         protected override void Dispose(bool disposing)

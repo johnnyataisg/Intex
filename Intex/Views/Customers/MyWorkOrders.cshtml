@@ -1,21 +1,100 @@
-﻿@model IEnumerable<Intex.models.WorkOrders>
+﻿@model IEnumerable<Intex.models.OrderDetails>
 
 @{
-    ViewBag.Title = "MyWorkOrders";
+    ViewBag.Title = "My Work Orders";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
-<h2>MyWorkOrders</h2>
+<header class="employee-header order-table-box">
+    <div>
+        <h2 style="float: left;">My Work Orders</h2>
+        <input id="myInput" onkeyup="myFunction()" class="form-control search-bar" type="search" placeholder="Search by compound" />
+    </div>
+    <div>
+        <table id="allOrders" class="table" style="font-size: 15px;">
+            <thead style="text-align: left; border-bottom: 2px solid azure;">
+                <tr class="order-table-header">
+                    <th class="order-table-col-2">
+                        Compound Name
+                    </th>
+                    <th class="order-table-col-2">
+                        Receive Date
+                    </th>
+                    <th class="order-table-col-2">
+                        Test Due Date
+                    </th>
+                    <th class="order-table-col-2">
+                        Comments
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="order-table-row">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkOrder.compounds.CompoundName)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.WorkOrder.ReceiveDate)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.WorkOrder.DateDue)
+                        </td>
+                        <td class="order-table-col-2">
+                            @Html.DisplayFor(modelItem => item.WorkOrder.Comments)
+                        </td>
+                    </tr>
+                    <tr class="hidden">
+                        <td colspan="6">
+                            <table style="width: 100%;">
+                                @foreach (var child in item.SampleList)
+                                {
+                                <tr>
+                                    <td>Sample @Html.DisplayFor(modelItem => child.Key.SequenceNumber)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.Quantity)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.assay.AssayName)</td>
+                                    @if (child.Key.AssayFinished == true)
+                                    {
+                                        <td class="order-table-col-2" style="color: green;">Testing Completed</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="order-table-col-2" style="color: red;">In Progress</td>
+                                    }
+                                </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script>
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("allOrders");
+                tr = table.getElementsByClassName("order-table-row");
 
-@foreach (var item in Model)
-{
-    <dl class="dl-horizontal">
-        <dt>
-            Compound Name
-        </dt>
-
-        <dd>
-            @Html.DisplayTextFor(item.Compounds.CompoundName)
-        </dd>
-    </dl>
-
-}
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        }
+                        else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+        <br />
+        <button class="btn btn-danger btn-lg">Delete Orders</button>
+    </div>
+</header>

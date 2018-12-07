@@ -170,7 +170,7 @@
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\EmployeeUsers.cs" />
     <Compile Include="Models\Invoices.cs" />
-    <Compile Include="Models\NumberInput.cs" />
+    <Compile Include="Models\NewOrder.cs" />
     <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Samples.cs" />
     <Compile Include="Models\Tests.cs" />
@@ -196,6 +196,7 @@
     <Content Include="Content\cardiogram.png" />
     <Content Include="Content\component.css" />
     <Content Include="Content\contact-bg.png" />
+    <Content Include="Content\customerbackground.jpg" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\departments-bg.jpg" />
     <Content Include="Content\doctors.png" />
@@ -378,10 +379,10 @@
     <Content Include="Views\Customers\Invoices.cshtml" />
     <Content Include="Views\Customers\MyWorkOrders.cshtml" />
     <Content Include="Views\Customers\RequestQuote.cshtml" />
-    <Content Include="Views\Customers\Settings.cshtml" />
     <Content Include="Views\Customers\Support.cshtml" />
-    <Content Include="Views\Customers\WorkOrders1.cshtml" />
+    <Content Include="Views\Customers\NewOrder.cshtml" />
     <Content Include="Views\Shared\_CustomerLayout.cshtml" />
+    <Content Include="Views\Customers\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

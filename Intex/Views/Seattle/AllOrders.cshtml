@@ -68,20 +68,20 @@
                             <table style="width: 100%;">
                                 @foreach (var child in item.SampleList)
                                 {
-                                    <tr>
-                                        <td>@Html.DisplayFor(modelItem => child.Key.SampleID)</td>
-                                        <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.SequenceNumber)</td>
-                                        <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.Quantity)</td>
-                                        <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.assay.AssayName)</td>
-                                        @if (child.Key.AssayFinished == false)
-                                        {
-                                            <td class="order-table-col-2" style="color: red;">In Progress</td>
-                                        }
-                                        else
-                                        {
-                                            <td class="order-table-col-2" style="color: green;">Testing Completed</td>
-                                        }
-                                    </tr>
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => child.Key.SampleID)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.SequenceNumber)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.Quantity)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.assay.AssayName)</td>
+                                    @if (child.Key.AssayFinished == true)
+                                    {
+                                        <td class="order-table-col-2" style="color: green;">Testing Completed</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="order-table-col-2" style="color: red;">In Progress</td>
+                                    }
+                                </tr>
                                 }
                             </table>
                         </td>

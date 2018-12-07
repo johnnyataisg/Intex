@@ -73,24 +73,24 @@
                             <table style="width: 100%;">
                                 @foreach (var child in item.SampleList)
                                 {
-                                    <tr class="sample-row">
-                                        <td>@Html.DisplayFor(modelItem => child.Key.SampleID)</td>
-                                        <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.SequenceNumber)</td>
-                                        <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.Quantity)</td>
-                                        <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.assay.AssayName)</td>
-                                        @if (child.Key.AssayFinished == false)
-                                        {
-                                            <td class="order-table-col-2" style="color: red;">In Progress</td>
-                                        }
-                                        else
-                                        {
-                                            <td class="order-table-col-2" style="color: green;">Testing Completed</td>
-                                        }
-                                            <td class="order-table-col-2">
-                                                @Html.ActionLink("Edit", "EditSample", new { id = child.Key.SampleID }) |
-                                                @Html.ActionLink("Details", "Details", new { id = child.Key.SampleID })
-                                            </td>
-                                    </tr>
+                                <tr class="sample-row">
+                                    <td>@Html.DisplayFor(modelItem => child.Key.SampleID)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.SequenceNumber)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.Quantity)</td>
+                                    <td class="order-table-col-2">@Html.DisplayFor(modelItem => child.Key.assay.AssayName)</td>
+                                    @if (child.Key.AssayFinished == true)
+                                    {
+                                        <td class="order-table-col-2" style="color: green;">Testing Completed</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="order-table-col-2" style="color: red;">In Progress</td>
+                                    }
+                                    <td class="order-table-col-2">
+                                        @Html.ActionLink("Edit", "EditSample", new { id = child.Key.SampleID }) |
+                                        @Html.ActionLink("Details", "Details", new { id = child.Key.SampleID })
+                                    </td>
+                                </tr>
                                     <tr class="hidden">
                                         <td colspan="6">
                                             <table style="width: 100%;">

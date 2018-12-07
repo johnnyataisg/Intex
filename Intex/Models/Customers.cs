@@ -21,7 +21,7 @@ namespace Intex.models
         public string State { get; set; }
         public string Country { get; set; }
         public string PaymentInfo { get; set; }
-        public string TotalOrderVolume { get; set; }
+        public int TotalOrderVolume { get; set; }
         public bool? DiscountQualify { get; set; }
         [ForeignKey("customerusers")]
         public virtual string Username { get; set; }
