@@ -20,11 +20,10 @@ namespace Intex.DAL
         public DbSet<Samples> samples { get; set; }
         public DbSet<Employees> employees { get; set; }
         public DbSet<EmployeeUsers> employeeusers { get; set; }
-        /*
+        public DbSet<TestTubes> testtubes { get; set; }
         public DbSet<Assays> assays { get; set; }
         public DbSet<CustomerUsers> customerusers { get; set; }
         public DbSet<Invoices> invoices { get; set; }
         public DbSet<Tests> tests { get; set; }
-        public DbSet<TestTubes> testtubes { get; set; }*/
     }
 }

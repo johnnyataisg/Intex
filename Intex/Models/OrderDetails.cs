@@ -8,6 +8,6 @@ namespace Intex.models
     public class OrderDetails
     {
         public WorkOrders WorkOrder { get; set; }
-        public List<Samples> SampleList { get; set; }
+        public Dictionary<Samples, List<TestTubes>> SampleList { get; set; }
     }
 }

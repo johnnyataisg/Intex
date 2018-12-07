@@ -1,0 +1,107 @@
+﻿@model Intex.models.Samples
+@{
+    ViewBag.Title = "Edit Sample Information";
+    Layout = "~/Views/Shared/_SingaporeLayout.cshtml";
+}
+
+<header class="employee-header order-table-box">
+    <h2>Edit Sample Information</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div style="width: 30%;" class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.LTNumber)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Sample ID
+                @Html.TextBoxFor(model => model.SampleID, new { @readonly = "readonly", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SampleID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                LT Number
+                @Html.TextBoxFor(model => model.LTNumber, new { @readonly = "readonly", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LTNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Sequence Number
+                @Html.TextBoxFor(model => model.SequenceNumber, new { @readonly = "readonly", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SequenceNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Quantity
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Appearance
+                @Html.EditorFor(model => model.Appearance, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Appearance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Indicated Weight
+                @Html.TextBoxFor(model => model.IndicatedWeight, new { @readonly = "readonly", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IndicatedWeight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Actual Weight
+                @Html.EditorFor(model => model.ActualWeight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActualWeight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Molecular Mass
+                @Html.EditorFor(model => model.MolecularMass, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MolecularMass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Assay Finished (Y/N)
+                @Html.EditorFor(model => model.AssayFinished, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AssayFinished, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                LT Number
+                @Html.DropDownList("AssayID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AssayID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-danger btn-lg" />
+            </div>
+        </div>
+    </div>
+    }
+</header>
+

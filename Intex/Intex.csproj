@@ -360,6 +360,12 @@
     <Content Include="Views\Shared\_SingaporeLayout.cshtml" />
     <Content Include="Views\Seattle\AllOrders.cshtml" />
     <Content Include="Views\Seattle\Customers.cshtml" />
+    <Content Include="Views\Singapore\AllOrders.cshtml" />
+    <Content Include="Views\Singapore\InTesting.cshtml" />
+    <Content Include="Views\Singapore\Completed.cshtml" />
+    <Content Include="Views\Singapore\Edit.cshtml" />
+    <Content Include="Views\Singapore\EditSample.cshtml" />
+    <Content Include="Views\Seattle\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

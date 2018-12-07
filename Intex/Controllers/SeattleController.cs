@@ -7,6 +7,7 @@ using Intex.DAL;
 using Intex.models;
 using System.Data.Entity;
 using System.Data;
+using System.Net;
 
 namespace Intex.Controllers
 {
@@ -28,12 +29,12 @@ namespace Intex.Controllers
             {
                 OrderDetails orderSamples = new OrderDetails();
                 orderSamples.WorkOrder = order;
-                orderSamples.SampleList = new List<Samples>();
+                orderSamples.SampleList = new Dictionary<Samples, List<TestTubes>>();
                 foreach (Samples sample in Database.samples.Include(w => w.assay).ToList())
                 {
                     if (sample.LTNumber == order.LTNumber)
                     {
-                        orderSamples.SampleList.Add(sample);
+                        orderSamples.SampleList.Add(sample, null);
                     }
                 }
                 allOrdersSamples.Add(orderSamples);
@@ -46,6 +47,29 @@ namespace Intex.Controllers
             var customers = Database.customers.Include(w => w.customerusers);
             List<Customers> allCustomers = customers.ToList();
             return View(allCustomers);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customers customer = Database.customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Customers customer)
+        {
+            Database.Entry(customer).State = EntityState.Modified;
+            Database.SaveChanges();
+            return RedirectToAction("Customers", "Seattle");
         }
     }
 }
