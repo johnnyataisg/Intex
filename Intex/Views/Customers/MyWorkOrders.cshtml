@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Intex.models.WorkOrders>
+
+@{
+    ViewBag.Title = "MyWorkOrders";
+}
+
+<h2>MyWorkOrders</h2>
+
+@foreach (var item in Model)
+{
+    <dl class="dl-horizontal">
+        <dt>
+            Compound Name
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(item.Compounds.CompoundName)
+        </dd>
+    </dl>
+
+}

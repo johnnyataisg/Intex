@@ -1,0 +1,47 @@
+﻿@model Intex.models.NumberInput
+
+@{
+    ViewBag.Title = "Work Orders";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h2>Work Orders</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Work Orders</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h4>Compound Name</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.wo.compounds.CompoundName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.wo.compounds.CompoundName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Number of Samples</h4>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Input, Enumerable.Range(1, 10).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }))
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Comments</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.wo.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.wo.Comments, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

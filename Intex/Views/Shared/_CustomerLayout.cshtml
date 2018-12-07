@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
+    <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/component.css" />
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/modernizr.custom.js"></script>
+    <script src="~/Content/main.js"></script>
+</head>
+<body class="seattle-employee-body">
+    <div class="container" style="min-width: 100%;">
+        <ul id="gn-menu" class="gn-menu-main">
+            <li class="gn-trigger">
+                <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                <nav class="gn-menu-wrapper">
+                    <div class="gn-scroller">
+                        <ul class="gn-menu">
+                            <li>
+                                <a href="/customers/requestquote" class="gn-icon gn-icon-download">Request a Quote</a>
+                            </li>
+                            <li>
+                                <a href="/customers/workorders1" class="gn-icon gn-icon-download">New Work Order</a>
+                            </li>
+                            <li>
+                                <a href="/customers/myworkorders" class="gn-icon gn-icon-download">My Work Orders</a>
+                            </li>
+                            <li>
+                                <a href="/customers/support"class="gn-icon gn-icon-download">Support</a>
+                            </li>
+                            <li><a href=@Url.Action("Settings", "Customers") class="gn-icon gn-icon-cog">Settings</a></li>
+                            <li></li>
+                            <li><a href="/customers/logout" class="gn-icon gn-icon-help">Logout</a></li>
+                        </ul>
+                    </div><!-- /gn-scroller -->
+                </nav>
+            </li>
+            <li><a href="/customers/index" class="codrops-icon codrops-icon-prev"><span>Portal Homepage</span></a></li>
+            <li><a class="codrops-icon codrops-icon-drop" href=""><span>NorthWest Test Labs</span></a></li>
+        </ul>
+        @RenderBody()
+    </div><!-- /container -->
+    <script src="~/Scripts/classie.js"></script>
+    <script src="~/Scripts/gnmenu.js"></script>
+    <script>
+        new gnMenu(document.getElementById('gn-menu'));
+    </script>
+</body>
+</html>
